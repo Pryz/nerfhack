@@ -18,7 +18,7 @@ def create_game(user1, user2):
         con = lite.connect('nerf.db')
         cur = con.cursor()
         cur.execute(
-            "INSERT INTO Games(Player1, Player2) VALUES(%s, %s)" % (user1, user2)
+            "INSERT INTO Games(Player1, Player2) VALUES(?, ?)", (user1, user2)
         )
         lid = cur.lastrowid
         return jsonify(id=lid)
@@ -35,7 +35,7 @@ def get_score(game_id):
         con = lite.connect('nerf.db')
         cur = con.cursor()
         cur.execute(
-            "SELECT Player1, Score1, Player2, Score2 FROM Games WHERE id=%s" % game_id
+            "SELECT Player1, Score1, Player2, Score2 FROM Games WHERE id=?", game_id
         )
         return jsonify(dict(cur.fetchall()))
     except lite.Error, e:
