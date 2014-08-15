@@ -14,7 +14,7 @@ $(document).ready(function() {
                 "<td>"+ response[i][5] +"</td>" +
                 "<td>"+ response[i][4] +"</td>" +
                 "<td>"+ response[i][6] +"</td>" +
-                "<td>"+ (parseInt(response[i][5]) > parseInt(response[i][6])) ? response[i][5] : response[i][6] +"</td>" +
+                "<td>"+ (parseInt(response[i][5]) > parseInt(response[i][6])) ? response[i][3] : response[i][4] +"</td>" +
                 "</tr>";
                 $('#matches > tbody').append(newRow);
             }
