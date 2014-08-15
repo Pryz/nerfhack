@@ -1,8 +1,10 @@
 $(document).ready(function() {
-
+    newGameId = 0;
+    var i = 0,max = 20, player1, player2;
+    
     $(".save-players").on('click', function() {
-        var player1 = $('#player1').val();
-        var player2 = $('#player2').val();
+        player1 = $('#player1').val();
+        player2 = $('#player2').val();
 
         if (!player1 || !player2) {
             alert('Enter both the player names');
@@ -12,14 +14,13 @@ $(document).ready(function() {
         $.ajax({
             url: "http://192.168.162.136/api/create/" + player1 + '/' + player2,
             type: "GET",
-            beforeSend: function(e) {
-                console.log('sending now');
-            },
             success: function(response) {
-                console.log('response.id');
+                newGameId = response.id;
+                console.log('New Game Id = ' + newGameId);
+                setPlayerNames();
             }
         });
-        
+        //setPlayerNames();
         $('#myModal').modal('hide');
     });
     
@@ -30,9 +31,36 @@ $(document).ready(function() {
         });
     });
     
-    var i = 0,
-    max = 20,
+    setPlayerNames = function(){
+        $('#player1-score, #player1-score').html('00');
+        $('#player1-name').html(player1);
+        $('#player2-name').html(player2);
+        $('.start-button-container').hide();
+        $('.players-list').show();
+        setTimeout(updateScore(), 1000);
+    }
     
+    updateScore = function() {
+        console.log('Calling updateScore');
+        $.ajax({
+            url: "http://192.168.162.136/api/game/" + newGameId,
+            type: "GET",
+            success: function(response) {
+                /**
+                 * "Id": 1,
+                    "Player1": "p1",
+                    "Player2": "p2",
+                    "Score1": 0,
+                    "Score2": 0
+                 */
+                console.log('Score1 = ' + response.Score1);
+                console.log('Score2 = ' + response.Score2);
+                $('#player1-score').html(("0" + response.Score1).slice(-2));
+                $('#player2-score').html(("0" + response.Score2).slice(-2));
+            }
+        });
+        
+    }
     timer = function() {
         console.log('i=' + i);
         i++;
