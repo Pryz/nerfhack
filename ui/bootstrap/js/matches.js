@@ -9,6 +9,7 @@ $(document).ready(function() {
             console.log('Response for list : ' + response);
             var len = response.length;
             for (var i = 0; i<= len; i++) {
+                console.log(response[i]);
                 var newRow = "<tr>" +
                 "<td>"+ response[i][3]+"</td>" +
                 "<td>"+ response[i][5] +"</td>" +
