@@ -12,15 +12,15 @@ app = Flask(__name__)
 def hello():
     return "Hello World!"
 
-# http://IP:5000/create/PLAYSERNAME1/PLAYERNMAE2
-@app.route('/create/<user1>/<user2>')
-def create_game(user1, user2):
+# http://IP:5000/create/P1|P2/PLAYSERNAME1/PLAYERNMAE2
+@app.route('/create/<mod>/<user1>/<user2>')
+def create_game(mod, user1, user2=""):
     try:
         con = lite.connect('nerf.db')
         cur = con.cursor()
         cur.execute(
-            "INSERT INTO Games(Player1, Player2, Score1, Score2) VALUES(?, ? ,? ,?)",
-            (user1, user2, 0, 0)
+            "INSERT INTO Games(Mod, Player1, Player2, Score1, Score2) VALUES(?, ?, ? ,? ,?)",
+            (mod, user1, user2, 0, 0)
         )
         lid = cur.lastrowid
         return jsonify(id=lid)
