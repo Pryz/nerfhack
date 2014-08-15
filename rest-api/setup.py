@@ -15,4 +15,5 @@ with con:
         Player1 TEXT,
         Player2 TEXT,
         Score1 INT,
-        Score2 INT)""")
+        Score2 INT,
+        Closed INT)""")
