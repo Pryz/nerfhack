@@ -1,5 +1,5 @@
 $(document).ready(function() {
-    
+    return;
     $("#matches > tbody").html("");
 
     $.ajax({

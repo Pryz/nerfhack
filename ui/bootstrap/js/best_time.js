@@ -1,5 +1,5 @@
 $(document).ready(function() {
-    
+    return;
     $("#best_time > tbody").html("");
 
     $.ajax({

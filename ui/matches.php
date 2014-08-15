@@ -52,19 +52,63 @@
             </thead>
             <tbody>
                 <tr>
-                    <td>CHINTAN</td>
+                    <td>CJ</td>
                     <td>12</td>
-                    <td>TONY</td>
+                    <td>PGO</td>
                     <td>16</td>
-                    <td>TONY</td>
+                    <td>PGO</td>
                 </tr>
                 <tr>
-                    <td>CHINTAN</td>
+                    <td>CJ</td>
                     <td>16</td>
                     <td>TONY</td>
                     <td>12</td>
-                    <td>CHINTAN</td>
+                    <td>CJ</td>
                 </tr>
+                <tr>
+                    <td>NATE</td>
+                    <td>12</td>
+                    <td>JULIEN</td>
+                    <td>16</td>
+                    <td>JULIEN</td>
+                </tr>
+                <tr>
+                    <td>PGR</td>
+                    <td>16</td>
+                    <td>TONY</td>
+                    <td>14</td>
+                    <td>PGR</td>
+                </tr>
+                <tr>
+                    <td>JULIEN</td>
+                    <td>16</td>
+                    <td>TONY</td>
+                    <td>3</td>
+                    <td>JULIEN</td>
+                </tr>
+                <tr>
+                    <td>NATE</td>
+                    <td>16</td>
+                    <td>TONY</td>
+                    <td>3</td>
+                    <td>NATE</td>
+                </tr>
+                <tr>
+                    <td>CJ</td>
+                    <td>16</td>
+                    <td>NATE</td>
+                    <td>0</td>
+                    <td>CJ</td>
+                </tr>
+                <tr>
+                    <td>JULIEN</td>
+                    <td>16</td>
+                    <td>PGO</td>
+                    <td>3</td>
+                    <td>JULIEN</td>
+                </tr>
+                
+                
             </tbody>
         </table>
         <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->

@@ -50,14 +50,44 @@
             </thead>
             <tbody>
                 <tr>
-                    <td>CHINTAN</td>
-                    <td>12</td>
-                    <td>12 secs</td>
+                    <td>PGO</td>
+                    <td>32</td>
+                    <td>10 secs</td>
                 </tr>
                 <tr>
-                    <td>CHINTAN</td>
-                    <td>16</td>
+                    <td>JULIEN</td>
+                    <td>32</td>
+                    <td>14 secs</td>
+                </tr>
+                <tr>
+                    <td>NATE</td>
+                    <td>32</td>
+                    <td>16 secs</td>
+                </tr>
+                <tr>
+                    <td>TONY</td>
+                    <td>32</td>
                     <td>19 secs</td>
+                </tr>
+                <tr>
+                    <td>CJ</td>
+                    <td>12</td>
+                    <td>42 secs</td>
+                </tr>
+                <tr>
+                    <td>CJ</td>
+                    <td>16</td>
+                    <td>49 secs</td>
+                </tr>
+                <tr>
+                    <td>NATE</td>
+                    <td>32</td>
+                    <td>51 secs</td>
+                </tr>
+                <tr>
+                    <td>CJ</td>
+                    <td>32</td>
+                    <td>59 secs</td>
                 </tr>
             </tbody>
         </table>
