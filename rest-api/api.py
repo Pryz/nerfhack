@@ -18,7 +18,8 @@ def create_game(user1, user2):
         con = lite.connect('nerf.db')
         cur = con.cursor()
         cur.execute(
-            "INSERT INTO Games VALUES(?, ?, ?, ?)", (user1, user2, 0, 0)
+            "INSERT INTO Games(Player1, Player2, Score1, Score2) VALUES(?, ? ,? ,?)",
+            (user1, user2, 0, 0)
         )
         lid = cur.lastrowid
         return jsonify(id=lid)
