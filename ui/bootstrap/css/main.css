@@ -20,6 +20,10 @@
     margin-top: -60px;
 }
 
+.logo-container img {
+    margin-left: 3%;
+}
+
 .players-list span{
     display: inline-block;
     color: white;
@@ -31,11 +35,17 @@ body, .navbar-inverse .navbar-inner {
 }
 
 .player-container {
-    margin: 5% 0% 5% 7%;
+    margin: 5% 0% 4% 7%;
 }
 
-.start-button-container {
-    width: 11%;
+.start-button-container{
+    width: 17%;
+    margin: 0 auto;
+    margin-top: 50px;
+}
+
+.winning-trophy {
+    width: 16%;
     margin: 0 auto;
 }
 
@@ -50,5 +60,20 @@ body, .navbar-inverse .navbar-inner {
 }
 
 .names {
-    width: 69%;
+    width: 64%;
+}
+
+.mode {
+    margin-bottom: 22px;
+}
+
+.radio.first {
+    width: 31%;
+    float: left;
+}
+
+.table{
+    background-color: cornsilk;
+    width: 90%;
+    margin: 0 auto;
 }
