@@ -17,3 +17,6 @@ with con:
         Score1 INT,
         Score2 INT,
         Closed INT)""")
+    cur.execute(
+        "INSERT INTO Games(Mod, Player1, Player2, Score1, Score2, Closed) VALUES('double', 'one', 'two' ,0 ,0, 1)"
+    )
