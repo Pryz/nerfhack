@@ -7,7 +7,7 @@ $(document).ready(function() {
         type: "GET",
         success: function(response) {
             console.log('Response for list : ' + response);
-            var len = response.length();
+            var len = response.length;
             for (var i = 0; i<= len; i++) {
                 var newRow = "<tr>" +
                 "<td>"+ response[i][3]+"</td>" +
