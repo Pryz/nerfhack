@@ -27,23 +27,44 @@ def create_game(user1, user2):
         return jsonify(error=e.args[0])
     finally:
         if con:
-            con.close() 
+            con.commit()
+            con.close()
 
 # http://IP:5000/game/ID
 @app.route('/game/<game_id>')
 def get_score(game_id):
     try:
         con = lite.connect('nerf.db')
+        con.row_factory = lite.Row
         cur = con.cursor()
         cur.execute(
             "SELECT * FROM Games WHERE id=?", game_id
         )
-        return jsonify(dict(cur.fetchall()))
+        data = cur.fetchone()
+        return jsonify(data)
     except lite.Error, e:
         return jsonify(error=e.args[0])
     finally:
         if con:
-            con.close() 
+            con.close()
+
+# http://IP:5000/list
+@app.route('/list')
+def get_list():
+    try:
+        con = lite.connect('nerf.db')
+        con.row_factory = lite.Row
+        cur = con.cursor()
+        cur.execute(
+            "SELECT * FROM Games LIMIT 10", 
+        )
+        data = cur.fetchall()
+        return jsonify(data)
+    except lite.Error, e:
+        return jsonify(error=e.args[0])
+    finally:
+        if con:
+            con.close()
 
 if __name__ == "__main__":
     app.run(host='0.0.0.0')

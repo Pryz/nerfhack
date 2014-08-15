@@ -11,11 +11,12 @@ GPIO.setup(23, GPIO.IN, pull_up_down = GPIO.PUD_DOWN)
 try:
     con = lite.connect('nerf.db')
     cur = con.cursor()
+    con.row_factory = lite.Row
     last_game_id = cur.lastrowid
     cur.execute(
         "SELECT Score1 FROM Games WHERE id=?", last_game_id
     )
-    data = dict(cur.fetchall())
+    data = cur.fetchone()
 except lite.Error, e:
     print 'Connection to nerf.db impossible'
 
@@ -24,7 +25,7 @@ while True:
         data['Score1'] += 1
         cur.execute(
             "UPDATE Games SET Score1=? WHERE Id=?", (data['Score1'], last_game_id)
-        )        
+        )
         con.commit()
 GPIO.cleanup()
 if con:
