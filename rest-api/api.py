@@ -56,7 +56,7 @@ def get_list():
         con = lite.connect('nerf.db')
         cur = con.cursor()
         cur.execute(
-            "SELECT * FROM Games LIMIT 10", 
+            "SELECT * FROM Games ORDER BY ID DESC LIMIT 10", 
         )
         data = cur.fetchall()
         return json.dumps(data)
