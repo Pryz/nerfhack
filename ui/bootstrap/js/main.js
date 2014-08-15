@@ -1,7 +1,7 @@
 $(document).ready(function() {
 
     $('#game-start-audio').get(0).play();
-    
+
     newGameId = 0;
     var player1, player2, mode, myTimeout;
 
@@ -82,22 +82,27 @@ $(document).ready(function() {
                 console.log('Player 1 Score : ' + response.Score1);
                 var player1Score = (typeof response.Score1 === 'undefined') ? 0 : response.Score1;
                 console.log('updated Player 1 Score : ' + player1Score);
-                
-                if (player1Score == 16) {
-                    winningMessage(1);
-                    clearTimeout(myTimeout);
-                    return;
-                } 
-                    
+
                 if (mode === 'double') {
+                    if (player1Score == 16) {
+                        winningMessage(1);
+                        clearTimeout(myTimeout);
+                        return;
+                    }
+                    
                     console.log('Player 2 Score : ' + response.Score2);
                     var player2Score = (typeof response.Score2 === 'undefined') ? 0 : response.Score2;
                     console.log('Updated Player 2 Score : ' + player2Score);
+                    
                     if (player2Score == 16) {
                         winningMessage(2);
                         clearTimeout(myTimeout);
                         return;
                     }
+                } else if(mode === 'single' && player1Score == 32){
+                    winningMessage(1);
+                    clearTimeout(myTimeout);
+                    return;
                 }
 
                 $('#player1-score').html(("0" + player1Score).slice(-2));
@@ -115,7 +120,7 @@ $(document).ready(function() {
         $(".player-dashboard").not('.player-' + playerNumber).hide();
         $('.winning-trophy').show();
     }
-    
+
     playAudioAgain = function() {
         console.log('Calling playAudioAgain');
         $('#game-start-audio').get(0).play();
