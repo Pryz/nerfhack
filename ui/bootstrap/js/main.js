@@ -3,7 +3,7 @@ $(document).ready(function() {
     $('#game-start-audio').get(0).play();
     
     newGameId = 0;
-    var player1, player2, mode;
+    var player1, player2, mode, myTimeout;
 
     $(".save-players").on('click', function() {
         player1 = $('#player1').val();
@@ -82,11 +82,15 @@ $(document).ready(function() {
                 console.log('Player 1 Score : ' + response.Score1);
                 if (mode === 'double') {
                     console.log('Player 2 Score : ' + response.Score2);
-                    if (response.Score1 == 16)
+                    if (response.Score1 == 16) {
                         winningMessage(1);
-                    if (response.Score2 == 16)
+                        clearTimeout(myTimeout);
+                        return;
+                    } else if (response.Score2 == 16) {
                         winningMessage(2);
-                    return;
+                        clearTimeout(myTimeout);
+                        return;
+                    }
                 }
 
                 $('#player1-score').html(("0" + response.Score1).slice(-2));
@@ -95,7 +99,7 @@ $(document).ready(function() {
                 }
             }
         });
-        setTimeout(updateScore, 1000);
+        myTimeout = setTimeout(updateScore, 1000);
     }
 
     winningMessage = function(playerNumber) {
