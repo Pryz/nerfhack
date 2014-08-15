@@ -86,7 +86,9 @@ $(document).ready(function() {
                         winningMessage(1);
                         clearTimeout(myTimeout);
                         return;
-                    } else if (response.Score2 == 16) {
+                    } 
+                    
+                    if (response.Score2 == 16) {
                         winningMessage(2);
                         clearTimeout(myTimeout);
                         return;
