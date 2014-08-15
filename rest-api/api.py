@@ -39,7 +39,7 @@ def get_score(game_id):
         con.row_factory = lite.Row
         cur = con.cursor()
         cur.execute(
-            "SELECT * FROM Games WHERE id=?", game_id
+            "SELECT * FROM Games WHERE Id=?", (game_id,)
         )
         data = cur.fetchone()
         return jsonify(data)
