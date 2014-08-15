@@ -109,7 +109,8 @@ $(document).ready(function() {
 
             }
         });
-        myTimeout = setTimeout(updateScore, 1000);
+        
+        myTimeout = setTimeout(updateScore, 2000);
     }
 
     winningMessage = function(playerNumber) {
