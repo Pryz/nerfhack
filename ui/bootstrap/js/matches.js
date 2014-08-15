@@ -7,14 +7,18 @@ $(document).ready(function() {
         type: "GET",
         success: function(response) {
             console.log('Response for list : ' + response);
-            newRow = "<tr>" +
-                "<td>"+ response.Player1 +"</td>" +
-                "<td>"+ response.Score1 +"</td>" +
-                "<td>"+ response.Player2 +"</td>" +
-                "<td>"+ response.Score2 +"</td>" +
-                "<td>"+ (parseInt(response.Score1) > parseInt(response.Score2)) ? response.Player1 : response.Player2 +"</td>" +
+            var len = response.length();
+            for (var i = 0; i<= len; i++) {
+                var newRow = "<tr>" +
+                "<td>"+ response[i][3]+"</td>" +
+                "<td>"+ response[i][5] +"</td>" +
+                "<td>"+ response[i][4] +"</td>" +
+                "<td>"+ response[i][6] +"</td>" +
+                "<td>"+ (parseInt(response[i][5]) > parseInt(response[i][6])) ? response[i][5] : response[i][6] +"</td>" +
                 "</tr>";
-            $('#matches > tbody').append(newRow);
+                $('#matches > tbody').append(newRow);
+            }
+            
         }
     });
 });
