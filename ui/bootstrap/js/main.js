@@ -1,6 +1,6 @@
 $(document).ready(function() {
 
-    //$('#game-start-audio').get(0).play();
+    $('#game-start-audio').get(0).play();
     
     newGameId = 0;
     var player1, player2, mode;
@@ -9,7 +9,9 @@ $(document).ready(function() {
         player1 = $('#player1').val();
         player2 = $('#player2').val();
         mode = $('input[name=mode]:checked').val();
-
+        console.log('Player 1 Name: ' + player1);
+        console.log('Player 2 Name: ' + player2);
+        console.log('Mode: ' + mode);
         if (!player1 || (mode === 'double' && !player2)) {
             alert('Player name is missing');
             return;
@@ -51,6 +53,7 @@ $(document).ready(function() {
     });
 
     setPlayerNames = function() {
+        console.log('Calling setPlayerNames');
         $('#player1-score').html('00');
         $('#player1-name').html(player1);
 
@@ -76,12 +79,14 @@ $(document).ready(function() {
                  "Score1": 0,
                  "Score2": 0
                  */
-
+                console.log('Player 1 Score : ' + response.Score1);
                 if (mode === 'double') {
+                    console.log('Player 2 Score : ' + response.Score2);
                     if (response.Score1 == 16)
                         winningMessage(1);
                     if (response.Score2 == 16)
                         winningMessage(2);
+                    return;
                 }
 
                 $('#player1-score').html(("0" + response.Score1).slice(-2));
@@ -94,11 +99,14 @@ $(document).ready(function() {
     }
 
     winningMessage = function(playerNumber) {
+        console.log('Calling winningMessage');
+        $('#winning-audio').get(0).play();
         $(".player-dashboard").not('.player-' + playerNumber).hide();
         $('.winning-trophy').show();
     }
     
     playAudioAgain = function() {
+        console.log('Calling playAudioAgain');
         $('#game-start-audio').get(0).play();
     }
 });

@@ -6,6 +6,7 @@ $(document).ready(function() {
         url: "http://192.168.162.136/api/bestTime",
         type: "GET",
         success: function(response) {
+            console.log('Response for bestTime : ' + response);
             newRow = "<tr>" +
                 "<td>"+ response.Player1 +"</td>" +
                 "<td>"+ response.Score1 +"</td>" +

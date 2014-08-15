@@ -104,5 +104,6 @@
         <script src="bootstrap/js/bootstrap.js"></script>
         <script src="bootstrap/js/main.js"></script>
         <audio id="game-start-audio" src="bootstrap/audio/skyrim_song_2.mp3" type="audio/mp3" onended="playAudioAgain()"></audio>
+        <audio id="winning-audio" src="bootstrap/audio/ending_song.mp3" type="audio/mp3" onended="playAudioAgain()"></audio>
     </body>
 </html>
