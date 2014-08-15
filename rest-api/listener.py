@@ -7,14 +7,13 @@ import sys, time
 from raspledstrip.ledstrip import *
 from bootstrap import *
 
+led = LEDStrip(32)
+
 # Stop the game if 
 # - Timer is out
 # - Single mod : Score1 >= 32
 # - Double mod : Score1 || Score2 >= 16
 def is_done(con, game_data):
-  print game_data['Mod']
-  print game_data['Score1'], '  ',game_data['Score2']
-  print
   if game_data['Mod'] == 'single':
     ts = int(time.time())
     if ts - game_data['CreatedAt'] > 120:
@@ -63,6 +62,7 @@ def get_last_game(con):
   return cur.fetchone()
 
 def add_pts_to(con, game_id, player, pts):
+  print player, '  ' , pts
   cur = con.cursor()
   cur.execute(
     "UPDATE Games SET Score%s=%s WHERE Id=%s" % (player, pts, game_id)
@@ -102,11 +102,10 @@ if __name__ == "__main__":
   GPIO.setup(24, GPIO.IN, pull_up_down = GPIO.PUD_DOWN)
 
   # Starting Lights
-  #anim = LarsonScanner(led, Color(255, 0, 0))
-  #for i in range(led.lastIndex*12):
-  #        anim.step()
-  #        led.update()
-  #        #sleep(0.03)
+  anim = LarsonScanner(led, Color(255, 0, 0))
+  for i in range(led.lastIndex*4):
+          anim.step()
+          led.update()
   led.fillOff()
   
   # Get the data of the last game
@@ -119,6 +118,7 @@ if __name__ == "__main__":
 
   need_new_game = 0
   current_game = get_last_game(con)
+  itr_for_new_game = 0
 
   while True:
     if(GPIO.input(24) == 1):
@@ -147,7 +147,9 @@ if __name__ == "__main__":
       led.update()
     if need_new_game == 1:
       print "Check for a new Game"
-      current_game = get_last_game(con)
+      itr_for_new_game += 1
+      if itr_for_new_game >= 100:
+        current_game = get_last_game(con)
     # if the current game is closed we wait for a new one
     if current_game['Closed'] == 1:
       print "The curent Game is closed"
@@ -164,7 +166,6 @@ if __name__ == "__main__":
         if idx == 24:
 	  print 'press my button'
           stop_game(con, current_game['Id'])
-          #led.fillOff()
 	  led.fillRGB(0, 0, 0, 0, 31)
           led.update()
           break
@@ -189,7 +190,9 @@ if __name__ == "__main__":
           elif idx == 4:
             # Add 3pts to P2
             P2 += 3
+    sleep(0.3)
     add_pts_to(con, current_game['Id'], 1, P1)
+    sleep(0.3)
     add_pts_to(con, current_game['Id'], 2, P2)
     print P1," ",P2
     if P1 > 0:
