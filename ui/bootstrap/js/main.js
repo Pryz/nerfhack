@@ -37,7 +37,7 @@ $(document).ready(function() {
         $('#player2-name').html(player2);
         $('.start-button-container').hide();
         $('.players-list').show();
-        setTimeout(updateScore(), 1000);
+        updateScore();
     }
     
     updateScore = function() {
@@ -59,7 +59,7 @@ $(document).ready(function() {
                 $('#player2-score').html(("0" + response.Score2).slice(-2));
             }
         });
-        
+        setTimeout(updateScore, 1000);
     }
     timer = function() {
         console.log('i=' + i);
