@@ -60,6 +60,7 @@ $(document).ready(function() {
         }
         $('.start-button-container').hide();
         $('.players-list').show();
+        sleep(2000);
         updateScore();
     }
 

@@ -42,7 +42,7 @@
             <img src="bootstrap/img/logo.png" alt="Logo">
         </div>
         
-        <table class="table table-striped">
+        <table id='best_time' class="table table-striped">
             <thead>
                 <th>Player Name</th>
                 <th>Score</th>
