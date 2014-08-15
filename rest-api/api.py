@@ -4,6 +4,7 @@
 from flask import Flask
 from flask import jsonify
 import sqlite3 as lite
+import json
 
 app = Flask(__name__)
 
@@ -53,13 +54,12 @@ def get_score(game_id):
 def get_list():
     try:
         con = lite.connect('nerf.db')
-        con.row_factory = lite.Row
         cur = con.cursor()
         cur.execute(
             "SELECT * FROM Games LIMIT 10", 
         )
         data = cur.fetchall()
-        return jsonify(data)
+        return json.dumps(data)
     except lite.Error, e:
         return jsonify(error=e.args[0])
     finally:
