@@ -29,13 +29,13 @@ def create_game(user1, user2):
             con.close() 
 
 # http://IP:5000/game/ID
-@app.route('/game/<id>')
+@app.route('/game/<game_id>')
 def get_score(game_id):
     try:
         con = lite.connect('nerf.db')
         cur = con.cursor()
         cur.execute(
-            "SELECT Player1, Score1, Player2, Score2 FROM Games WHERE id=?", game_id
+            "SELECT * FROM Games WHERE id=?", game_id
         )
         return jsonify(dict(cur.fetchall()))
     except lite.Error, e:
