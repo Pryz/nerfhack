@@ -1,3 +1,54 @@
+.container {
+    width: auto;
+    float: left;
+}
+
+.numbers {
+    font-family:"digital-7";
+    color: red !important;
+    font-size: 1.1em;
+}
+
+.players-list {
+    font-size: 9em;
+    width: 60%;
+    margin: 0 auto;
+}
+
+.logo-container {
+    height: 300px !important;
+    margin-top: -60px;
+}
+
+.players-list span{
+    display: inline-block;
+    color: white;
+}
+
+body, .navbar-inverse .navbar-inner {
+    background-color: #000000 !important;
+    line-height: normal;
+}
+
+.player-container {
+    margin: 5% 0% 5% 7%;
+}
+
+.start-button-container {
+    width: 11%;
+    margin: 0 auto;
+}
+
+.control-label {
+    width: 13%;
+    float: left;
+    margin-top: 5px;
+}
+
 .score-container {
 	margin-top : 130px;
+}
+
+.names {
+    width: 69%;
 }
